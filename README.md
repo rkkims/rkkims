@@ -1,16 +1,16 @@
 # Richard Kim
 
-**Data engineer specializing in geospatial and public-sector data.**
+**Data engineer specializing in geospatial data and hard-to-reach sources.**
 
-I build ingestion systems for sources that do not cooperate: government open-data
-portals, GIS endpoints, and records that arrive as monthly PDF reports. The kind where
-every upstream fails differently and the schema changes without telling you.
+I build ingestion systems for sources that do not cooperate: GIS endpoints, undocumented
+APIs, and records that arrive only as PDF reports. The kind where every upstream fails
+differently and the schema changes without telling you.
 
-Most recently I designed and ran a platform that ingested municipal open data from
-**38 Canadian cities and provincial agencies** into one PostgreSQL schema on an
-unattended daily schedule. Before that, six years building genomics data pipelines in
-research labs: high-volume batch processing, DAG orchestration, reproducibility as a
-hard requirement. Different domain, same discipline.
+Most recently I designed and ran a platform that consolidated **38 heterogeneous data
+sources** into one PostgreSQL schema on an unattended daily schedule, with spatial
+resolution across millions of records. Before that, six years building genomics data
+pipelines in research labs: high-volume batch processing, DAG orchestration,
+reproducibility as a hard requirement. Different domain, same discipline.
 
 Working remote and async. Open to data engineering roles and contract work.
 
@@ -24,26 +24,26 @@ validation, and polygon-layer ingestion from GeoJSON and WFS sources with checks
 manifests, so a silently changed boundary file gets caught rather than quietly reshaping
 the data.
 
-**Public-sector and civic data.** 38 municipal and provincial sources across seven
-provinces: Socrata, ArcGIS REST, CKAN, Opendatasoft, WFS, CSV drops, and eight
-municipalities that publish only as PDF reports. Open-data licence compliance and PII
-handling included, because public records and public-domain records are not the same
-thing.
+**Heterogeneous source integration.** 38 sources, no two alike: ArcGIS REST, Socrata,
+CKAN, Opendatasoft, WFS, CSV drops, and eight that published only as PDF reports. One
+canonical schema behind them, so downstream consumers cannot tell which source a record
+came from.
 
 **Hard-target data acquisition.** Undocumented APIs, protobuf request construction,
-bot-detection handling, and document extraction where no structured feed exists at all.
+bot-detection handling, TLS fingerprint impersonation, and document extraction where no
+structured feed exists at all.
 
 ---
 
 ### 🏗️ Selected work
 
-**[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: municipal open-data ingestion platform
+**[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: multi-source ingestion platform
 > 38 sources into a 275-table PostgreSQL schema, unattended daily. 151 pipelines over 145
 > source adapters. Incremental sync with a 14-day amendment overlap, fail-open upstream
-> change detection, spatial resolution against municipal boundary layers, asymmetric PII
-> gating, and an entity-resolution benchmark I shipped as a **NO-GO** after measuring my
-> own roadmap assumption to be 65x wrong. Curated extract of a production system,
-> 4,169 commits, retired August 2026.
+> change detection, point-in-polygon spatial resolution against boundary layers,
+> asymmetric PII gating, and an entity-resolution benchmark I shipped as a **NO-GO** after
+> measuring my own roadmap assumption to be 65x wrong. Curated extract of a production
+> system, 4,169 commits, retired August 2026.
 >
 > `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `GCP`
 
