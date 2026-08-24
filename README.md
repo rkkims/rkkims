@@ -1,52 +1,72 @@
 # Richard Kim
 
-**Data engineer.** I build ingestion systems for messy, heterogeneous, real-world
-sources — the kind where every upstream fails differently and the schema changes
-without telling you.
+**Data engineer specializing in geospatial and public-sector data.**
+
+I build ingestion systems for sources that do not cooperate: government open-data
+portals, GIS endpoints, and records that arrive as monthly PDF reports. The kind where
+every upstream fails differently and the schema changes without telling you.
 
 Most recently I designed and ran a platform that ingested municipal open data from
-**38 Canadian cities and provincial agencies** into one Postgres schema on an
+**38 Canadian cities and provincial agencies** into one PostgreSQL schema on an
 unattended daily schedule. Before that, six years building genomics data pipelines in
-research labs — high-volume batch processing, DAG orchestration, reproducibility as a
+research labs: high-volume batch processing, DAG orchestration, reproducibility as a
 hard requirement. Different domain, same discipline.
 
-Working remote and async. Open to data engineering roles.
+Working remote and async. Open to data engineering roles and contract work.
+
+---
+
+### 🗺️ What I specialize in
+
+**Geospatial data engineering.** PostGIS at production depth: 105 GIST spatial indexes,
+point-in-polygon resolution across millions of records, geocoding pipelines, geometry
+validation, and polygon-layer ingestion from GeoJSON and WFS sources with checksum
+manifests, so a silently changed boundary file gets caught rather than quietly reshaping
+the data.
+
+**Public-sector and civic data.** 38 municipal and provincial sources across seven
+provinces: Socrata, ArcGIS REST, CKAN, Opendatasoft, WFS, CSV drops, and eight
+municipalities that publish only as PDF reports. Open-data licence compliance and PII
+handling included, because public records and public-domain records are not the same
+thing.
+
+**Hard-target data acquisition.** Undocumented APIs, protobuf request construction,
+bot-detection handling, and document extraction where no structured feed exists at all.
 
 ---
 
 ### 🏗️ Selected work
 
-**[canpermits-platform](https://github.com/rkkims/canpermits-platform)** — municipal open-data ingestion platform
-> 38 sources → 275-table Postgres schema, unattended daily. 151 pipelines over 145
-> source adapters (Socrata, ArcGIS, WFS, CKAN, CSV drops, and monthly PDFs parsed
-> with `pdfplumber`). Incremental sync with a 14-day amendment overlap, fail-open
-> upstream change detection, asymmetric PII gating, and an entity-resolution
-> benchmark I shipped as a **NO-GO** after measuring my own roadmap assumption to be
-> 65× wrong. Curated extract of a production system — 4,169 commits, retired Aug 2026.
+**[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: municipal open-data ingestion platform
+> 38 sources into a 275-table PostgreSQL schema, unattended daily. 151 pipelines over 145
+> source adapters. Incremental sync with a 14-day amendment overlap, fail-open upstream
+> change detection, spatial resolution against municipal boundary layers, asymmetric PII
+> gating, and an entity-resolution benchmark I shipped as a **NO-GO** after measuring my
+> own roadmap assumption to be 65x wrong. Curated extract of a production system,
+> 4,169 commits, retired August 2026.
 >
-> `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `cron` `GCP`
+> `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `GCP`
 
-**[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)** — validation & correction service
-> FastAPI service that parses free-text itineraries, resolves stops against place
-> APIs, checks them against a rule set (closed / overlap / infeasible travel time /
-> duplicate), and applies a push-forward correction cascade. Clean service-layer
-> separation with an eval harness scored against a labelled dataset.
+**[googleflight-scraper](https://github.com/rkkims/googleflight-scraper)**: extraction from an undocumented source
+> Google Flights encodes search state as base64-wrapped protobuf and returns
+> positionally-indexed arrays. No schema, and both sides change without notice. Requests
+> compile from `.proto` definitions rather than string-templated URLs, and parsers are
+> unit-tested against captured response fixtures, so an upstream shape change fails in CI
+> instead of silently in production.
+>
+> `JavaScript` `protobuf` `Docker` `GitHub Actions`
+
+**[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)**: validation and correction service
+> FastAPI service that parses free-text itineraries, resolves stops against place APIs,
+> checks them against a rule set (closed, overlapping, infeasible travel time, duplicate),
+> then applies a push-forward correction cascade. Scored against a labelled dataset rather
+> than eyeballed.
 >
 > `Python` `FastAPI` `SQLAlchemy` `pytest`
 
-**[googleflight-scraper](https://github.com/rkkims/googleflight-scraper)** — resilient extraction from an undocumented source
-> Google Flights encodes search state as base64-wrapped protobuf and returns
-> positionally-indexed arrays — no schema, both sides change without notice. Requests
-> are compiled from `.proto` definitions rather than string-templated; parsers are
-> unit-tested against **captured response fixtures**, so an upstream shape change fails
-> in CI instead of silently in production. A scheduled job rolls fixture dates forward
-> so the suite never expires.
->
-> `JavaScript` `protobuf` `Docker` `GitHub Actions` `Apify`
-
-**[VirPipe](https://github.com/rkkims/VirPipe)** — configurable bioinformatics pipeline framework
-> Lets researchers compose and deploy custom virus-detection pipelines over
-> high-throughput sequencing data without rewriting orchestration each time.
+**[VirPipe](https://github.com/rkkims/VirPipe)**: composable pipeline framework
+> Lets researchers compose and deploy custom detection pipelines over high-throughput
+> sequencing data without rewriting orchestration each time.
 >
 > `Python` `Nextflow`
 
@@ -55,11 +75,12 @@ Working remote and async. Open to data engineering roles.
 ### 🧰 Stack
 
 **Languages** Python · SQL · JavaScript/TypeScript · Bash · R
-**Data** PostgreSQL · PostGIS · SQLAlchemy · psycopg2 · pandas · SQLite
-**Pipelines** Nextflow · cron orchestration · incremental sync & watermarking · CDC-style change detection · entity resolution
+**Spatial** PostGIS · GeoJSON · WFS · ArcGIS REST · geocoding · spatial indexing
+**Data** PostgreSQL · SQLAlchemy · psycopg2 · schema migrations · entity resolution
+**Pipelines** incremental sync · watermarking · change detection · idempotent upserts · Nextflow
 **Serving** FastAPI · REST API design · Pydantic
 **Infra** Docker · GCP · GitHub Actions · Sentry · Linux
-**Practice** schema migrations · data-quality monitoring · freshness SLOs · adjudicated benchmarks · pytest
+**Practice** data-quality monitoring · freshness SLOs · adjudicated benchmarks · pytest
 
 ---
 
@@ -67,31 +88,31 @@ Working remote and async. Open to data engineering roles.
 
 - **Idempotent by default.** Re-running a pipeline should be free and safe. That
   assumption is what makes overlap windows, backfills, and replays cheap.
-- **Fail open on uncertainty.** Every ambiguous path in a skip/short-circuit decision
-  should take the expensive branch. A false skip costs correctness; a false fetch
-  costs seconds.
-- **Measure before you scope.** I've killed my own feature with a 57-case adjudicated
+- **Fail open on uncertainty.** Every ambiguous path in a skip decision should take the
+  expensive branch. A false skip costs correctness; a false fetch costs seconds.
+- **Measure before you scope.** I have killed my own feature with a 57-case adjudicated
   sample. Days of measurement beat months building on a wrong denominator.
 - **Write the reason, not the value.** A tuning constant without its incident recorded
   beside it is a constant nobody can safely change later.
 
 ---
 
-### 🔬 Earlier work — research data pipelines
+### 🔬 Earlier work: research data pipelines
 
-Six years as a research software engineer in genomics, building and maintaining
-Nextflow pipelines for genome assembly, metagenomic classification, and consensus
-generation from long- and short-read sequencing data
+Six years as a research software engineer in genomics, building and maintaining Nextflow
+pipelines for genome assembly, metagenomic classification, and consensus generation from
+long- and short-read sequencing data
 ([VSAT](https://github.com/rkkims/VSAT),
 [BunyaFinder](https://github.com/rkkims/BunyaFinder),
 [Snakehead](https://github.com/rkkims/Snakehead),
 [KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus)).
-These were data engineering problems with a different noun in front of them:
-unreliable instrument output, long-running batch DAGs, schema drift between tool
-versions, and pipelines other people had to run without me in the room.
+
+These were data engineering problems with a different noun in front of them: unreliable
+instrument output, long-running batch DAGs, schema drift between tool versions, and
+pipelines other people had to run without me in the room.
 
 ---
 
 ### 📫 Reach me
 
-[Email](mailto:richard.k.kim.work@gmail.com) · open to remote / async data engineering roles
+[Email](mailto:richard.k.kim.work@gmail.com) · open to remote and async data engineering work
