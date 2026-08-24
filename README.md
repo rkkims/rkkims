@@ -6,9 +6,9 @@ I build ingestion systems for sources that do not cooperate: GIS endpoints, undo
 APIs, and records that arrive only as PDF reports. The kind where every upstream fails
 differently and the schema changes without telling you.
 
-Most recently I designed and ran a platform that consolidated **38 heterogeneous data
-sources** into one PostgreSQL schema on an unattended daily schedule, with spatial
-resolution across millions of records. Before that, six years building genomics data
+Most recently I designed and ran a platform that consolidated **38 municipal and
+provincial data sources** into one PostgreSQL schema on an unattended daily schedule, with
+spatial resolution across millions of records. Before that, six years building genomics data
 pipelines in research labs: high-volume batch processing, DAG orchestration,
 reproducibility as a hard requirement. Different domain, same discipline.
 
@@ -24,10 +24,11 @@ validation, and polygon-layer ingestion from GeoJSON and WFS sources with checks
 manifests, so a silently changed boundary file gets caught rather than quietly reshaping
 the data.
 
-**Heterogeneous source integration.** 38 sources, no two alike: ArcGIS REST, Socrata,
-CKAN, Opendatasoft, WFS, CSV drops, and eight that published only as PDF reports. One
-canonical schema behind them, so downstream consumers cannot tell which source a record
-came from.
+**Civic and property data.** 38 municipal and provincial sources across seven provinces,
+no two alike: ArcGIS REST, Socrata, CKAN, Opendatasoft, WFS, CSV drops, and eight that
+published only as PDF reports. One canonical schema behind them, so downstream consumers
+cannot tell which source a record came from. Open-data licence compliance and PII handling
+included, because public records and public-domain records are not the same thing.
 
 **Hard-target data acquisition.** Undocumented APIs, protobuf request construction,
 bot-detection handling, TLS fingerprint impersonation, and document extraction where no
