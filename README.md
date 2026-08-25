@@ -2,74 +2,45 @@
 
 **Data engineer specializing in geospatial data and hard-to-reach sources.**
 
-I build ingestion systems for sources that do not cooperate: GIS endpoints, undocumented
-APIs, and records that arrive only as PDF reports. The kind where every upstream fails
-differently and the schema changes without telling you.
+I build ingestion systems for sources that do not cooperate: GIS endpoints, undocumented APIs, and records that arrive only as PDF reports.
 
-Most recently I designed and ran a platform that consolidated **38 municipal and
-provincial data sources** into one PostgreSQL schema on an unattended daily schedule, with
-spatial resolution across millions of records. Before that, six years building genomics data
-pipelines in research labs: high-volume batch processing, DAG orchestration,
-reproducibility as a hard requirement. Different domain, same discipline.
+Most recently, I designed and ran a platform called [CanPermits](https://canpermits.com) that consolidated **38 Canadian municipal and provincial data sources** into a single PostgreSQL schema on an unattended daily schedule, with spatial resolution across millions of records. Before that, I spent six years building genomics data pipelines in research labs: high\-volume batch processing, DAG orchestration, and reproducibility as a hard requirement.
 
-Working remote and async. Open to data engineering roles and contract work.
+I am open to data engineering roles and contract work.
 
 ---
 
 ### 🗺️ What I specialize in
 
-**Geospatial data engineering.** PostGIS at production depth: 105 GIST spatial indexes,
-point-in-polygon resolution across millions of records, geocoding pipelines, geometry
-validation, and polygon-layer ingestion from GeoJSON and WFS sources with checksum
-manifests, so a silently changed boundary file gets caught rather than quietly reshaping
-the data.
+**Geospatial data engineering.** PostGIS at production depth: 105 GiST spatial indexes, point-in-polygon resolution across millions of records, geocoding pipelines, geometry validation, and polygon-layer ingestion from GeoJSON and WFS sources with checksum manifests.
 
-**Civic and property data.** 38 municipal and provincial sources across seven provinces,
-no two alike: ArcGIS REST, Socrata, CKAN, Opendatasoft, WFS, CSV drops, and eight that
-published only as PDF reports. One canonical schema behind them, so downstream consumers
-cannot tell which source a record came from. Open-data licence compliance and PII handling
-included, because public records and public-domain records are not the same thing.
+**Civic and property data.** Public data from 38 municipalities across 7 provinces, sourced in various formats: ArcGIS REST, Socrata, CKAN, OpenDataSoft, WFS, CSV drops, and PDF reports. A single canonical schema was built around these sources, so downstream consumers do not need to know which source a record came from. Open-data license compliance and PII handling included.
 
-**Hard-target data acquisition.** Undocumented APIs, protobuf request construction,
-bot-detection handling, TLS fingerprint impersonation, and document extraction where no
-structured feed exists at all.
+**Hard-target data acquisition.** Undocumented APIs, protobuf request construction, bot-detection handling, TLS fingerprint impersonation, and document extraction where no structured feed exists at all.
 
 ---
 
 ### 🏗️ Selected work
 
 **[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: multi-source ingestion platform
-> 38 sources into a 275-table PostgreSQL schema, unattended daily. 151 pipelines over 145
-> source adapters. Incremental sync with a 14-day amendment overlap, fail-open upstream
-> change detection, point-in-polygon spatial resolution against boundary layers,
-> asymmetric PII gating, and an entity-resolution benchmark I shipped as a **NO-GO** after
-> measuring my own roadmap assumption to be 65x wrong. Curated extract of a production
-> system, 4,169 commits, retired August 2026.
->
+> 38 sources into a PostgreSQL schema, running unattended daily. Incremental sync with upstream change detection, point-in-polygon spatial resolution against boundary layers, and asymmetric PII gating. The public repo above is the curated extract of a production system that was retired in August 2026.
+> 
 > `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `GCP`
 
-**[googleflight-scraper](https://github.com/rkkims/googleflight-scraper)**: extraction from an undocumented source
-> Google Flights encodes search state as base64-wrapped protobuf and returns
-> positionally-indexed arrays. No schema, and both sides change without notice. Requests
-> compile from `.proto` definitions rather than string-templated URLs, and parsers are
-> unit-tested against captured response fixtures, so an upstream shape change fails in CI
-> instead of silently in production.
->
-> `JavaScript` `protobuf` `Docker` `GitHub Actions`
+**[googleflight-scraper](https://github.com/rkkims/googleflight-scraper)**:
+> Google Flights’ base64-wrapped protobuf payload can be decoded into positionally indexed arrays. For round-trip flights, the outbound flight search result is reconstructed as protobuf and fed into the return-flight search.
+> 
+> `JavaScript` `protobuf` `Docker`
 
 **[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)**: validation and correction service
-> FastAPI service that parses free-text itineraries, resolves stops against place APIs,
-> checks them against a rule set (closed, overlapping, infeasible travel time, duplicate),
-> then applies a push-forward correction cascade. Scored against a labelled dataset rather
-> than eyeballed.
->
+> FastAPI service that parses free-text itineraries, resolves stops against place APIs, and checks them against a rule set for closed locations, overlapping stops, infeasible travel times, and duplicates.
+> 
 > `Python` `FastAPI` `SQLAlchemy` `pytest`
 
-**[VirPipe](https://github.com/rkkims/VirPipe)**: composable pipeline framework
-> Lets researchers compose and deploy custom detection pipelines over high-throughput
-> sequencing data without rewriting orchestration each time.
+**[JipBap](https://jipbap.com)**: Asian recipe recommendation web app based on what you have in your pantry. Features a unique Asian ingredient ontology.
 >
-> `Python` `Nextflow`
+> `TypeScript`, `HTML`
+
 
 ---
 
@@ -81,20 +52,6 @@ structured feed exists at all.
 **Pipelines** incremental sync · watermarking · change detection · idempotent upserts · Nextflow
 **Serving** FastAPI · REST API design · Pydantic
 **Infra** Docker · GCP · GitHub Actions · Sentry · Linux
-**Practice** data-quality monitoring · freshness SLOs · adjudicated benchmarks · pytest
-
----
-
-### 📌 Things I care about
-
-- **Idempotent by default.** Re-running a pipeline should be free and safe. That
-  assumption is what makes overlap windows, backfills, and replays cheap.
-- **Fail open on uncertainty.** Every ambiguous path in a skip decision should take the
-  expensive branch. A false skip costs correctness; a false fetch costs seconds.
-- **Measure before you scope.** I have killed my own feature with a 57-case adjudicated
-  sample. Days of measurement beat months building on a wrong denominator.
-- **Write the reason, not the value.** A tuning constant without its incident recorded
-  beside it is a constant nobody can safely change later.
 
 ---
 
@@ -108,12 +65,8 @@ long- and short-read sequencing data
 [Snakehead](https://github.com/rkkims/Snakehead),
 [KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus)).
 
-These were data engineering problems with a different noun in front of them: unreliable
-instrument output, long-running batch DAGs, schema drift between tool versions, and
-pipelines other people had to run without me in the room.
-
 ---
 
 ### 📫 Reach me
 
-[Email](mailto:richard.k.kim.work@gmail.com) · open to remote and async data engineering work
+[Email](mailto:richard.k.kim.work@gmail.com) · open to data engineering work
