@@ -46,11 +46,11 @@ I am open to data engineering roles and contract work.
 
 ### 🧰 Stack
 
-**Languages** Python · SQL · JavaScript/TypeScript · Bash · R
-**Spatial** PostGIS · GeoJSON · WFS · ArcGIS REST · geocoding · spatial indexing
-**Data** PostgreSQL · SQLAlchemy · psycopg2 · schema migrations · entity resolution
-**Pipelines** incremental sync · watermarking · change detection · idempotent upserts · Nextflow
-**Serving** FastAPI · REST API design · Pydantic
+**Languages** Python · SQL · JavaScript/TypeScript · Bash · R  
+**Spatial** PostGIS · GeoJSON · WFS · ArcGIS REST · geocoding · spatial indexing  
+**Data** PostgreSQL · SQLAlchemy · psycopg2 · schema migrations · entity resolution  
+**Pipelines** incremental sync · watermarking · change detection · idempotent upserts · Nextflow  
+**Serving** FastAPI · REST API design · Pydantic  
 **Infra** Docker · GCP · GitHub Actions · Sentry · Linux
 
 ---
