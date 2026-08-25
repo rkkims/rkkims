@@ -60,7 +60,8 @@ I am open to data engineering roles and contract work.
 Six years as a research software engineer in genomics, building and maintaining Nextflow
 pipelines for genome assembly, metagenomic classification, and consensus generation from
 long- and short-read sequencing data
-([VSAT](https://github.com/rkkims/VSAT),
+([VirPipe](https://github.com/rkkims/VirPipe)
+[VSAT](https://github.com/rkkims/VSAT),
 [BunyaFinder](https://github.com/rkkims/BunyaFinder),
 [Snakehead](https://github.com/rkkims/Snakehead),
 [KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus)).
