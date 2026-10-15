@@ -1,73 +1,63 @@
 # Richard Kim
 
-**Data engineer specializing in geospatial data and hard-to-reach sources.**
+**Python developer working across data pipelines, data analysis, and AI evaluation.**
 
-I build ingestion systems for sources that do not cooperate: GIS endpoints, undocumented APIs, and records that arrive only as PDF reports.
+I build data pipelines, analyze messy real-world data, and review code: my own, other people's, and code written by models. Over the past year I have worked in AI training, evaluating code patches and agent behaviour against written rubrics. Before that, I spent six years building analysis pipelines in genomics research labs.
 
-Most recently, I designed and ran a platform called [CanPermits](https://canpermits.com) that consolidated **38 Canadian municipal and provincial data sources** into a single PostgreSQL schema on an unattended daily schedule, with spatial resolution across millions of records. Before that, I spent six years building genomics data pipelines in research labs: high\-volume batch processing, DAG orchestration, and reproducibility as a hard requirement.
-
-I am open to data engineering roles and contract work.
+I am open to AI evaluation, data, and software roles, as well as contract work.
 
 ---
 
-### 🗺️ What I specialize in
+### 🧪 What I do
 
-**Geospatial data engineering.** PostGIS at production depth: 105 GiST spatial indexes, point-in-polygon resolution across millions of records, geocoding pipelines, geometry validation, and polygon-layer ingestion from GeoJSON and WFS sources with checksum manifests.
+**AI evaluation and code review.** I annotate code patches from large public repositories (NumPy, React, Numba) against their issue descriptions. I also judge virtual-agent interactions against performance rubrics. In my own projects, I score LLM output against labelled datasets instead of checking demo outputs by eye.
 
-**Civic and property data.** Public data from 38 municipalities across 7 provinces, sourced in various formats: ArcGIS REST, Socrata, CKAN, OpenDataSoft, WFS, CSV drops, and PDF reports. A single canonical schema was built around these sources, so downstream consumers do not need to know which source a record came from. Open-data license compliance and PII handling included.
+**Data analysis and visualization.** I take raw, inconsistent data through inspection, normalization, and QA to results someone can act on, and I document what the data cannot support. I work in Python (pandas/GeoPandas, Jupyter), R (ComplexHeatmap, phyloseq), and SQL.
 
-**Hard-target data acquisition.** Undocumented APIs, protobuf request construction, bot-detection handling, TLS fingerprint impersonation, and document extraction where no structured feed exists at all.
+**Data pipelines.** I built unattended ingestion from 38 public sources into one PostgreSQL/PostGIS schema, with incremental sync and data-quality checks. I also wrote reproducible Nextflow workflows for research data.
 
 ---
 
 ### 🏗️ Selected work
 
+**[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)**: a correction layer for AI-generated output
+> FastAPI service that catches and repairs LLM-generated itineraries that read fluently but are impossible: closed venues, infeasible travel times, overlaps, duplicates. The validator is scored against a labelled dataset, and fuzz and latency checks are included.
+>
+> `Python` `FastAPI` `pytest` `LLM evaluation`
+
+**[municipal-streetlight-network](https://github.com/rkkims/municipal-streetlight-network)**: reproducible data analysis
+> Public infrastructure data from two municipalities goes through acquisition, inspection, normalization driven by YAML mappings, QA, network tracing, and map exhibits. It includes an honest record of the data's limitations.
+>
+> `Python` `GeoPandas` `NetworkX` `Jupyter`
+
 **[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: multi-source ingestion platform
-> 38 sources into a PostgreSQL schema, running unattended daily. Incremental sync with upstream change detection, point-in-polygon spatial resolution against boundary layers, and asymmetric PII gating. The public repo above is the curated extract of a production system that was retired in August 2026.
-> 
+> Ingests 38 sources into one PostgreSQL schema, unattended daily. Features incremental sync with change detection, spatial resolution, and PII gating. This repository is a curated extract of a production system that was retired in August 2026.
+>
 > `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `GCP`
 
-**[googleflight-scraper](https://github.com/rkkims/googleflight-scraper)**:
-> Google Flights’ base64-wrapped protobuf payload can be decoded into positionally indexed arrays. For round-trip flights, the outbound flight search result is reconstructed as protobuf and fed into the return-flight search.
-> 
-> `JavaScript` `protobuf` `Docker`
-
-**[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)**: validation and correction service
-> FastAPI service that parses free-text itineraries, resolves stops against place APIs, and checks them against a rule set for closed locations, overlapping stops, infeasible travel times, and duplicates.
-> 
-> `Python` `FastAPI` `SQLAlchemy` `pytest`
-
-**[JipBap](https://jipbap.com)**: Asian recipe recommendation web app based on what you have in your pantry. Features a unique Asian ingredient ontology.
+**[VirPipe](https://github.com/rkkims/VirPipe)**: published research pipeline
+> A configurable pipeline for virus detection in sequencing data. First-author paper in *Bioinformatics* (2023).
 >
-> `TypeScript`, `HTML`
-
+> `Python` `Nextflow`
 
 ---
 
 ### 🧰 Stack
 
-**Languages** Python · SQL · JavaScript/TypeScript · Bash · R  
-**Spatial** PostGIS · GeoJSON · WFS · ArcGIS REST · geocoding · spatial indexing  
-**Data** PostgreSQL · SQLAlchemy · psycopg2 · schema migrations · entity resolution  
-**Pipelines** incremental sync · watermarking · change detection · idempotent upserts · Nextflow  
-**Serving** FastAPI · REST API design · Pydantic  
-**Infra** Docker · GCP · GitHub Actions · Sentry · Linux
+**Languages** Python · SQL · JavaScript/TypeScript · R · Bash  
+**Data** pandas · GeoPandas · Jupyter · PostgreSQL/PostGIS · SQLite  
+**Formats** JSON · YAML · XML · HTML · Markdown · GeoJSON  
+**Engineering** FastAPI · pytest · Docker · GitHub Actions · Linux · Nextflow  
+**AI tooling** LLM APIs · code agents (Claude Code) · rubric-based evaluation
 
 ---
 
 ### 🔬 Earlier work: research data pipelines
 
-Six years as a research software engineer in genomics, building and maintaining Nextflow
-pipelines for genome assembly, metagenomic classification, and consensus generation from
-long- and short-read sequencing data
-([VirPipe](https://github.com/rkkims/VirPipe)
-[VSAT](https://github.com/rkkims/VSAT),
-[BunyaFinder](https://github.com/rkkims/BunyaFinder),
-[Snakehead](https://github.com/rkkims/Snakehead),
-[KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus)).
+I worked six years in genomics research labs, building Nextflow and Python pipelines for assembly, classification, and consensus generation. See [VSAT](https://github.com/rkkims/VSAT), [BunyaFinder](https://github.com/rkkims/BunyaFinder), [Snakehead](https://github.com/rkkims/Snakehead), [metagenome_heatmap](https://github.com/rkkims/metagenome_heatmap), and [KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus).
 
 ---
 
 ### 📫 Reach me
 
-[Email](mailto:richard.k.kim.work@gmail.com) · open to data engineering work
+[Email](mailto:richard.k.kim.work@gmail.com) · open to AI evaluation, data, and software work
