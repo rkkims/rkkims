@@ -1,63 +1,43 @@
 # Richard Kim
 
-**Python developer working across data pipelines, data analysis, and AI evaluation.**
+I work on test automation and test infrastructure. I write tests that catch real bugs, and I contribute to the tools that make tests easier to write.
 
-I build data pipelines, analyze messy real-world data, and review code: my own, other people's, and code written by models. Over the past year I have worked in AI training, evaluating code patches and agent behaviour against written rubrics. Before that, I spent six years building analysis pipelines in genomics research labs.
-
-I am open to AI evaluation, data, and software roles, as well as contract work.
+I am looking for SDET and test-automation roles (remote, Canada) starting in June 2027, and I am available for contract work now.
 
 ---
 
-### 🧪 What I do
+### 🔧 Open source
 
-**AI evaluation and code review.** I annotate code patches from large public repositories (NumPy, React, Numba) against their issue descriptions. I also judge virtual-agent interactions against performance rubrics. In my own projects, I score LLM output against labelled datasets instead of checking demo outputs by eye.
+I contribute to **[testcontainers-node](https://github.com/testcontainers/testcontainers-node)**, a library that gives Node.js tests throwaway Docker containers.
+- For [#1544](https://github.com/testcontainers/testcontainers-node/issues/1544), I am building line-based log consumers (`LogConsumers.lines`) test-first. The PR is in progress.
+- In [#1642](https://github.com/testcontainers/testcontainers-node/issues/1642), I reported that stderr log events never fire. The report includes a repro, the root cause, and three fix options.
 
-**Data analysis and visualization.** I take raw, inconsistent data through inspection, normalization, and QA to results someone can act on, and I document what the data cannot support. I work in Python (pandas/GeoPandas, Jupyter), R (ComplexHeatmap, phyloseq), and SQL.
+In **[stac-fastapi-pgstac](https://github.com/stac-utils/stac-fastapi-pgstac)**, I opened [PR #450](https://github.com/stac-utils/stac-fastapi-pgstac/pull/450). It adds a regression test for null links that runs against two endpoints.
 
-**Data pipelines.** I built unattended ingestion from 38 public sources into one PostgreSQL/PostGIS schema, with incremental sync and data-quality checks. I also wrote reproducible Nextflow workflows for research data.
+In **[geopandas](https://github.com/geopandas/geopandas)**, I reported [#3897](https://github.com/geopandas/geopandas/issues/3897), a bug where named aggregation resets the active geometry.
 
 ---
 
-### 🏗️ Selected work
+### 🍚 Project: [jipbap](https://github.com/rkkims/recipes-public)
 
-**[travel-itinerary-validation-api](https://github.com/rkkims/travel-itinerary-validation-api)**: a correction layer for AI-generated output
-> FastAPI service that catches and repairs LLM-generated itineraries that read fluently but are impossible: closed venues, infeasible travel times, overlaps, duplicates. The validator is scored against a labelled dataset, and fuzz and latency checks are included.
->
-> `Python` `FastAPI` `pytest` `LLM evaluation`
+[jipbap.com](https://jipbap.com) answers the question "what do I cook with this?" for Korean home cooking. Most of the code exists to make ingredient matching correct: a search for "scallion" must find green-onion recipes, and gochugaru must never match crushed red pepper.
 
-**[municipal-streetlight-network](https://github.com/rkkims/municipal-streetlight-network)**: reproducible data analysis
-> Public infrastructure data from two municipalities goes through acquisition, inspection, normalization driven by YAML mappings, QA, network tracing, and map exhibits. It includes an honest record of the data's limitations.
->
-> `Python` `GeoPandas` `NetworkX` `Jupyter`
-
-**[canpermits-platform](https://github.com/rkkims/canpermits-platform)**: multi-source ingestion platform
-> Ingests 38 sources into one PostgreSQL schema, unattended daily. Features incremental sync with change detection, spatial resolution, and PII gating. This repository is a curated extract of a production system that was retired in August 2026.
->
-> `Python` `PostgreSQL` `PostGIS` `FastAPI` `Docker` `GCP`
-
-**[VirPipe](https://github.com/rkkims/VirPipe)**: published research pipeline
-> A configurable pipeline for virus detection in sequencing data. First-author paper in *Bioinformatics* (2023).
->
-> `Python` `Nextflow`
+The site is built with Next.js and TypeScript, runs its API on Cloudflare Workers, and is deployed on my own server with systemd and nginx.
 
 ---
 
 ### 🧰 Stack
 
-**Languages** Python · SQL · JavaScript/TypeScript · R · Bash  
-**Data** pandas · GeoPandas · Jupyter · PostgreSQL/PostGIS · SQLite  
-**Formats** JSON · YAML · XML · HTML · Markdown · GeoJSON  
-**Engineering** FastAPI · pytest · Docker · GitHub Actions · Linux · Nextflow  
-**AI tooling** LLM APIs · code agents (Claude Code) · rubric-based evaluation
+I test with pytest and Testcontainers, using fixtures and regression tests. I write TypeScript, Python, SQL, and Bash, and I am learning Go. I work with Docker, GitHub Actions, Linux, PostgreSQL, and Cloudflare Workers.
 
 ---
 
-### 🔬 Earlier work: research data pipelines
+### 📜 Background
 
-I worked six years in genomics research labs, building Nextflow and Python pipelines for assembly, classification, and consensus generation. See [VSAT](https://github.com/rkkims/VSAT), [BunyaFinder](https://github.com/rkkims/BunyaFinder), [Snakehead](https://github.com/rkkims/Snakehead), [metagenome_heatmap](https://github.com/rkkims/metagenome_heatmap), and [KU-ONT-SEOV-consensus](https://github.com/rkkims/KU-ONT-SEOV-consensus).
+I spent six years building research pipelines in Python and Nextflow in genomics labs, and I am first author of a paper in *Bioinformatics* (2023) on [VirPipe](https://github.com/rkkims/VirPipe). More recently, I have done AI training work, reviewing code patches and agent behaviour against written rubrics.
 
 ---
 
 ### 📫 Reach me
 
-[Email](mailto:richard.k.kim.work@gmail.com) · open to AI evaluation, data, and software work
+You can reach me by [email](mailto:richard.k.kim.work@gmail.com).
