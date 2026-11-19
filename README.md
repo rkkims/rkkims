@@ -28,7 +28,7 @@ The site is a static Next.js and TypeScript app deployed on Cloudflare Pages.
 
 ### 🧰 Stack
 
-I test with pytest and Testcontainers, using fixtures and regression tests. I write TypeScript, Python, SQL, and Bash, and I am learning Go. I work with Docker, GitHub Actions, Linux, PostgreSQL, and Cloudflare Workers.
+I test with pytest and Testcontainers, using fixtures and regression tests. I write TypeScript, Python, SQL, and Bash, and I am learning Go. I work with Docker, GitHub Actions, Linux, PostgreSQL, and Cloudflare Pages and Workers.
 
 ---
 
