@@ -20,9 +20,9 @@ In **[geopandas](https://github.com/geopandas/geopandas)**, I reported [#3897](h
 
 ### 🍚 Project: [jipbap](https://github.com/rkkims/recipes-public)
 
-[jipbap.com](https://jipbap.com) answers the question "what do I cook with this?" for Korean home cooking. Most of the code exists to make ingredient matching correct: a search for "scallion" must find green-onion recipes, and gochugaru must never match crushed red pepper.
+[jipbap.com](https://jipbap.com) answers the question "what do I cook with this?" for Asian home cooking. Most of the code exists to make ingredient matching correct: a search for "scallion" must find green-onion recipes, and gochugaru must never match crushed red pepper.
 
-The site is built with Next.js and TypeScript, runs its API on Cloudflare Workers, and is deployed on my own server with systemd and nginx.
+The site is built with Next.js and TypeScript, runs its API on Cloudflare Workers, and is deployed on Cloudflare Pages.
 
 ---
 
