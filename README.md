@@ -19,7 +19,7 @@ In **[geopandas](https://github.com/geopandas/geopandas)**, I reported [#3897](h
 
 ---
 
-### 🍚 Project: [jipbap](https://github.com/rkkims/recipes-public)
+### 🍚 Project: jipbap
 
 [jipbap.com](https://jipbap.com) answers the question "what do I cook with this?" for Asian home cooking. Most of the code exists to make ingredient matching correct: a search for "scallion" must find green-onion recipes, and gochugaru must never match crushed red pepper.
 
