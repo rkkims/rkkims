@@ -9,8 +9,9 @@ I am looking for SDET and test-automation roles (remote, Canada) starting in Jun
 ### 🔧 Open source
 
 I contribute to **[testcontainers-node](https://github.com/testcontainers/testcontainers-node)**, a library that gives Node.js tests throwaway Docker containers.
-- For [#1544](https://github.com/testcontainers/testcontainers-node/issues/1544), I am building line-based log consumers (`LogConsumers.lines`) test-first. The PR is in progress.
-- In [#1642](https://github.com/testcontainers/testcontainers-node/issues/1642), I reported that stderr log events never fire. The report includes a repro, the root cause, and three fix options.
+- [PR #1661](https://github.com/testcontainers/testcontainers-node/pull/1661): I added `LogConsumers.lines`, which delivers container logs line by line. It is reviewed and waiting for a final pass.
+- [#1663](https://github.com/testcontainers/testcontainers-node/issues/1663): I reported that a log consumer stops receiving logs after `restart()`.
+- [#1642](https://github.com/testcontainers/testcontainers-node/issues/1642): I reported that stderr log events never fire.
 
 In **[stac-fastapi-pgstac](https://github.com/stac-utils/stac-fastapi-pgstac)**, I opened [PR #450](https://github.com/stac-utils/stac-fastapi-pgstac/pull/450). It adds a regression test for null links that runs against two endpoints.
 
